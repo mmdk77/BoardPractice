@@ -23,6 +23,7 @@ public class BoardDAOJDBC {
 	private String BOARD_LIST = "select * from board order by desc";
 
 	public void insertBoard(BoardVO vo) {
+		System.out.println(vo.getTitle()+vo.getWriter()+vo.getContent()+"!!!");
 		template.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
 	}
 
@@ -57,8 +58,7 @@ public class BoardDAOJDBC {
 	
 	public List<BoardVO> getBoardList(BoardVO vo){
 		
-		List list = template.query(BOARD_LIST, new RowMapper<BoardVO>(){
-
+		List<BoardVO> list = template.query(BOARD_LIST, new RowMapper<BoardVO>(){
 			@Override
 			public BoardVO mapRow(ResultSet rs, int row) throws SQLException {
 				// TODO Auto-generated method stub
@@ -74,7 +74,7 @@ public class BoardDAOJDBC {
 			}
 			
 		});
-
+		System.out.println(list+"111111111111");
 		return list;
 	}
 
