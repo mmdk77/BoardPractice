@@ -1,8 +1,9 @@
 # BoardPractice
 
-#Spring Basic DB 연결
-Connection, PrepareStatement, ResultSet 
+# Spring Basic DB 연결
+#Connection, PrepareStatement, ResultSet 
 
-#Spring JDBC 연결
+# Spring JDBC 연결
+#JDBCTemplate
 
-#Spring Mybatis 연결
+# Spring Mybatis 연결
