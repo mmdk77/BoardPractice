@@ -22,7 +22,7 @@ public class BoardDAO {
 	private final static String BOARD_GET = "select * from board where board_seq=?";
 	private final static String BOARD_LIST = "select * from board order by desc";
 
-	// ±€ µÓ∑œ
+	//Í∏ÄÏì∞Í∏∞
 	public void insertBoard(BoardVO vo) {
 		con = JDBCUtil.getConnection();
 		try {
@@ -40,7 +40,7 @@ public class BoardDAO {
 		}
 	}
 
-	// ±€ºˆ¡§
+	// Í∏ÄÏàòÏ†ï
 	public void updateBoard(BoardVO vo) {
 		con = JDBCUtil.getConnection();
 		try {
@@ -57,7 +57,7 @@ public class BoardDAO {
 		}
 	}
 
-	// ±€ªË¡¶
+	// Í∏ÄÏÇ≠Ï†ú
 	public void deleteBoard(BoardVO vo) {
 		con = JDBCUtil.getConnection();
 		try {
@@ -72,6 +72,7 @@ public class BoardDAO {
 		}
 	}
 
+	// Í∏ÄÏ°∞Ìöå
 	public BoardVO getBoard(BoardVO vo) {
 		con = JDBCUtil.getConnection();
 		BoardVO board = null;
@@ -99,11 +100,13 @@ public class BoardDAO {
 
 	}
 	
+	//Í∏Ä Î™©Î°ùÏ°∞Ìöå
 	public List<BoardVO> getBoardList(BoardVO vo){
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		con = JDBCUtil.getConnection();
 		try {
 			pstmt=con.prepareStatement(BOARD_LIST);
+			System.out.println(BOARD_LIST);
 			pstmt.executeQuery();
 			while(rs.next()){
 				BoardVO board = new BoardVO();

@@ -10,7 +10,7 @@ public class JDBCUtil {
 
 	public static Connection getConnection(){
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java_jdbc", "java_jdbc");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

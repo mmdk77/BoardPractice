@@ -14,6 +14,7 @@ import com.spring.board.domain.BoardVO;
 @Repository("boardDAOJdbc")
 public class BoardDAOJDBC {
 
+	@Autowired
 	private JdbcTemplate template;
 
 	private String BOARD_INSERT = "insert into board(board_seq,title,writer,content) values(board_seq.nextval,?,?,?)";
@@ -24,7 +25,7 @@ public class BoardDAOJDBC {
 
 	public void insertBoard(BoardVO vo) {
 		System.out.println(vo.getTitle()+vo.getWriter()+vo.getContent()+"!!!");
-		template.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
+		template.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent()); 
 	}
 
 	public void updateBoard(BoardVO vo) {
