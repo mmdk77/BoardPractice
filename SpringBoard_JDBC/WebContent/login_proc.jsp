@@ -1,4 +1,4 @@
-<%@ page import="com.srping.user.repository.UserDAO"%>
+<%@ page import="com.spring.user.repository.UserDAO"%>
 <%@ page import="com.spring.user.domain.UserVO"%>
 
 <%
