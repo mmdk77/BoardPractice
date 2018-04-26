@@ -21,7 +21,7 @@ public class BoardDAOJDBC {
 	private String BOARD_UPDATE = "update board set title=?,content=? where board_seq=?";
 	private String BOARD_DELETE = "delete board where board_seq=?";
 	private String BOARD_GET = "select * from board where board_seq=?";
-	private String BOARD_LIST = "select * from board order by desc";
+	private String BOARD_LIST = "select * from board order by board_seq desc";
 
 	public void insertBoard(BoardVO vo) {
 		System.out.println(vo.getTitle()+vo.getWriter()+vo.getContent()+"!!!");
@@ -48,7 +48,7 @@ public class BoardDAOJDBC {
 				vo.setTitle(rs.getString("title"));
 				vo.setWriter(rs.getString("Writer"));
 				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getDate("date"));
+				vo.setRegdate(rs.getString("regdate"));
 				vo.setCnt(rs.getInt("cnt"));
 				return vo;
 			}
@@ -59,7 +59,7 @@ public class BoardDAOJDBC {
 	
 	public List<BoardVO> getBoardList(BoardVO vo){
 		
-		List<BoardVO> list = template.query(BOARD_LIST, new RowMapper<BoardVO>(){
+		List list = template.query(BOARD_LIST, new RowMapper<BoardVO>(){
 			@Override
 			public BoardVO mapRow(ResultSet rs, int row) throws SQLException {
 				// TODO Auto-generated method stub
@@ -68,14 +68,13 @@ public class BoardDAOJDBC {
 				vo.setTitle(rs.getString("title"));
 				vo.setWriter(rs.getString("Writer"));
 				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getDate("date"));
+				vo.setRegdate(rs.getString("regdate"));
 				vo.setCnt(rs.getInt("cnt"));
 				
 				return vo;
 			}
 			
 		});
-		System.out.println(list+"111111111111");
 		return list;
 	}
 

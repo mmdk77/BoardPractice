@@ -3,6 +3,7 @@ package com.spring.board.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.spring.board.domain.BoardVO;
@@ -12,6 +13,7 @@ import com.spring.board.repository.BoardDAOJDBC;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
+	@Qualifier("boardDAOJdbc")
 	private BoardDAOJDBC boardDAOJdbc;
 	
 	@Override

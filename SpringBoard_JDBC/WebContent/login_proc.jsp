@@ -1,3 +1,4 @@
+<%@page import="com.spring.user.repository.UserDAOJDBC"%>
 <%@ page import="com.spring.user.repository.UserDAO"%>
 <%@ page import="com.spring.user.domain.UserVO"%>
 
@@ -9,7 +10,7 @@
 	vo.setId(id);
 	vo.setPassword(password);
 
-	UserDAO userDAO = new UserDAO();
+	UserDAOJDBC userDAO = new UserDAOJDBC();
 	UserVO user = userDAO.getUser(vo);
 
 	if (user != null) {

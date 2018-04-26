@@ -21,10 +21,11 @@ public class UserDAO {
 	
 	public UserVO getUser(UserVO vo){
 		UserVO user = null;
-		System.out.println("===>JDBC getUser() ��� ó��");
+		System.out.println("===>JDBC getUser() 기능 수행");
 		System.out.println(vo);
 		try {
 			con = JDBCUtil.getConnection();
+			System.out.println(con);
 			pstmt = con.prepareStatement(USER_GET);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPassword());
