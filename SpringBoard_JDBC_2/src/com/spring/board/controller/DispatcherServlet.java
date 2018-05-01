@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.spring.user.domain.UserVO;
+import com.spring.user.repository.UserDAOJDBC;
+
 @WebServlet(name = "action", urlPatterns = { "*.do" })
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +35,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	}
 
-	private void process(HttpServletRequest request, HttpServletResponse response) {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
@@ -40,6 +43,22 @@ public class DispatcherServlet extends HttpServlet {
 
 		if (path.equals("/login.do")) {
 			System.out.println("로그인 처리");
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
+			
+			UserVO vo = new UserVO();
+			vo.setId(id);
+			vo.setPassword(password);
+			
+			UserDAOJDBC userDAOJDBC = new UserDAOJDBC();
+			UserVO user = userDAOJDBC.getUser(vo);
+			
+			if(user!=null) {
+				response.sendRedirect("getBoardList.jsp");
+			}else {
+				response.sendRedirect("login.jsp");
+			}
+			
 		} else if (path.equals("/logout.do")) {
 			System.out.println("로그아웃 처리");
 		} else if (path.equals("/insertBoard.do")) {
