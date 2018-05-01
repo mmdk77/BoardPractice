@@ -52,7 +52,7 @@
 		<% for(BoardVO board:boardList){ %>
 		<tr>
 			<td><%=board.getBoard_seq() %></td>
-			<td align="left"><a href="getBoard.jsp?seq=<%=board.getBoard_seq()%>"><%=board.getTitle() %></a></td>
+			<td align="left"><a href="getBoard.jsp?board_seq=<%=board.getBoard_seq()%>"><%=board.getTitle() %></a></td>
 			<td><%=board.getWriter() %></td>
 			<td><%=board.getContent() %></td>
 			<td><%=board.getRegdate() %></td>

@@ -17,11 +17,17 @@ public class BoardDAOJDBC {
 	@Autowired
 	private JdbcTemplate template;
 
-	private String BOARD_INSERT = "insert into board(board_seq,title,writer,content) values(board_seq.nextval,?,?,?)";
-	private String BOARD_UPDATE = "update board set title=?,content=? where board_seq=?";
-	private String BOARD_DELETE = "delete board where board_seq=?";
-	private String BOARD_GET = "select * from board where board_seq=?";
-	private String BOARD_LIST = "select * from board order by board_seq desc";
+	private final String BOARD_INSERT = "insert into board(board_seq,title,writer,content) values(board_seq.nextval,?,?,?)";
+	private final String BOARD_UPDATE = "update board set title=?,content=? where board_seq=?";
+	private final String BOARD_DELETE = "delete board where board_seq=?";
+	private final String BOARD_GET = "select * from board where board_seq=?";
+	private final String BOARD_LIST = "select * from board order by board_seq desc";
+
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
 
 	public void insertBoard(BoardVO vo) {
 		System.out.println(vo.getTitle()+vo.getWriter()+vo.getContent()+"!!!");
@@ -70,11 +76,12 @@ public class BoardDAOJDBC {
 				vo.setContent(rs.getString("content"));
 				vo.setRegdate(rs.getString("regdate"));
 				vo.setCnt(rs.getInt("cnt"));
-				
+		
 				return vo;
 			}
 			
 		});
+		System.out.println(list);
 		return list;
 	}
 

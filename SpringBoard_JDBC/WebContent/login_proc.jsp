@@ -1,6 +1,7 @@
 <%@page import="com.spring.user.repository.UserDAOJDBC"%>
 <%@ page import="com.spring.user.repository.UserDAO"%>
 <%@ page import="com.spring.user.domain.UserVO"%>
+<%@page contentType="text/html; charset=EUC-KR" %>
 
 <%
 	String id = request.getParameter("id");

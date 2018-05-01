@@ -15,6 +15,12 @@ public class UserDAOJDBC {
 
 	@Autowired
 	private JdbcTemplate template;
+	
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
 
 	private static final String USER_GET = "select * from users where id=? and password=?";
 
@@ -27,10 +33,11 @@ public class UserDAOJDBC {
 				UserVO vo = new UserVO();
 				vo.setId(rs.getString("id"));
 				vo.setPassword(rs.getString("password"));
+				System.out.println(vo);
 				return vo;
 			}
 
-		},vo.getId());
+		},vo);
 		System.out.println(vo);
 		return vo;
 	}
