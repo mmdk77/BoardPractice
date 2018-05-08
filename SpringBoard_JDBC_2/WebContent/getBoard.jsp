@@ -4,12 +4,7 @@
 	pageEncoding="EUC-KR"%>
 
 <%
-	String board_seq = request.getParameter("board_seq");
-	BoardVO vo = new BoardVO();
-	vo.setBoard_seq(Integer.parseInt(board_seq));
-
-	BoardDAOJDBC boardDAO = new BoardDAOJDBC();
-	BoardVO board = boardDAO.getBoard(vo);
+	BoardVO board = (BoardVO) session.getAttribute("board");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,7 +17,7 @@
 	<h1>글 상세</h1>
 	<a href="logout_proc.jsp">Log-out</a>
 	<hr>
-	<form action="updateBoard_proc.jsp" method="post">
+	<form action="updateBoard.do" method="post">
 	<input name="board_seq" type="hidden" value="<%=board.getBoard_seq()%>">
 		<table border="1" cellpadding="0" cellspacing="0">
 
@@ -52,8 +47,8 @@
 	</form>
 	
 	<a href="insertBoard.jsp">글 등록</a>&nbsp;&nbsp;
-	<a href="deleteBoard_proc.jsp?board_seq=<%=board.getBoard_seq()%>">글삭제</a>&nbsp;&nbsp;
-	<a href="getBoardList.jsp">글목록</a>&nbsp;&nbsp;
+	<a href="deleteBoard.do?board_seq=<%=board.getBoard_seq()%>">글삭제</a>&nbsp;&nbsp;
+	<a href="getBoardList.do">글목록</a>&nbsp;&nbsp;
 
 
 
