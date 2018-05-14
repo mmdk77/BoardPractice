@@ -1,69 +1,77 @@
-<%@page import="com.spring.board.repository.BoardDAO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.spring.board.repository.BoardDAOJDBC"%>
 <%@page import="com.spring.board.domain.BoardVO"%>
-<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-
+<%@page import="java.util.List"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 
 <%
-
 	List<BoardVO> boardList = (List) session.getAttribute("boardList");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Document</title>
 </head>
-<body>
-	<center>
-		<h1>±Û¸ñ·Ï</h1>
-		<h3>
-			Å×½ºÆ®´Ô È¯¿µÇÕ´Ï´Ù...<a href="#">·Î±×¾Æ¿ô</a>
-		</h3>
+<style>
+table {
+	border: 1px;
+	border-style: solid;
+	padding: 0;
+	border-spacing: 0;
+	width: 500px;
+	margin: 0;
+}
 
-		<form action="getBoardList.jsp" method="post">
-			<table border="1" cellpadding="0" cellspacing="0" width="700">
+#select {
+	text-align: right;
+} 	
+
+td {
+	border: 1px;
+	border-style: solid;
+	text-align: center;
+	margin: 0;
+}
+</style>
+<body>
+	
+		<h1>ê¸€ ëª©ë¡</h1>
+		<h3>í…ŒìŠ¤íŠ¸ë‹˜ í™˜ì˜ í•©ë‹ˆë‹¤.....</h3>
+		<form action="getBoardList.do" method="post">
+			<table>
 				<tr>
-					<td align="right"><select name="searchCondition">
-							<option value="title">Á¦¸ñ
-							<option value="content">³»¿ë
-					</select> <input name="searchKeyword" type="text"> <input
-						type="submit" value="°Ë»ö"></td>
+					<td id="select"><select name="searchCondition">
+							<option value="title">ì œëª©</option>
+							<option value="content">ë‚´ìš©</option>
+					</select> <input type="text" name="searchKeyword"> <input
+						type="submit" value="ê²€ìƒ‰ÂƒÂ‰"></td>
 				</tr>
 			</table>
 		</form>
 
-
-		<table border="1" cellpadding="0" cellspacing="0" width="700">
+		<table>
 			<tr>
-				<th width="700">¹øÈ£</th>
-				<th width="700">Á¦¸ñ</th>
-				<th width="700">ÀÛ¼ºÀÚ</th>
-				<th width="700">µî·ÏÀÏ</th>
-				<th width="700">Á¶È¸¼ö</th>
-
+				<th>ë²ˆí˜¸</th>
+				<th>ì œëª©</th>
+				<th>ì‘ì„±ìÂÂ</th>
+				<th>ë“±ë¡ì¼</th>
+				<th>ì¡°íšŒìˆ˜</th>
 			</tr>
 			<%
 				for (BoardVO board : boardList) {
 			%>
 			<tr>
-				<td><%=board.getBoard_seq()%></td>
-				<td align="left"><a href="getBoard.do?board_seq=<%=board.getBoard_seq()%>"><%=board.getTitle()%></a></td>
-				<td><%=board.getWriter()%></td>
-				<td><%=board.getContent()%></td>
-				<td><%=board.getRegdate()%></td>
-				<td><%=board.getCnt()%></td>
+				<td><a href="getBoard.do?board_seq=<%= board.getBoard_seq()%>"><%=board.getTitle() %></a></td>
+				<td><%=board.getWriter() %></td>
+				<td><%=board.getContent() %></td>
+				<td><%=board.getRegdate() %></td>
+				<td><%=board.getCnt() %></td>
 			</tr>
 			<%
 				}
 			%>
-
 		</table>
-		<br> <a href="insertBoard.jsp">±Û¾²±â</a>
-	</center>
-
-
+		<br> <a href="getBoard.jsp">ìƒˆê¸€ ë“±ë¡</a>
+	
 
 </body>
 </html>
