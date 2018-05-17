@@ -11,18 +11,19 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.board.domain.BoardVO;
 
-@Repository("boardDAOJDBC")
-public class BoardDAOJDBC implements BoardDAO{
+@Repository
+public class BoardDAOJDBC implements BoardDAO {
+
+	private final String BOARD_GET = "select * from board where board_seq=?";
+	private final String BOARD_LIST = "select * from board order by board_seq desc";
+	private final String BOARD_INSERT = "insert into board(board_seq,title,writer,content) values(board_seq.val,?,?,?)";
+	private final String BOARD_DELETE = "delete board where board_seq=?";
+	private final String BOARD_UPDATE = "update board set title=?, writer=?, content=? where board_seq=?";
+
 	
 	@Autowired
 	private JdbcTemplate template;
 	
-	private final String BOARD_GET="select * from board where board_seq=?";
-	private final String BOARD_LIST="select * from board order by board_seq desc";
-	private final String BOARD_INSERT="insert into board(board_seq,title,writer,content) values(board_seq.val,?,?,?)";
-	private final String BOARD_DELETE="delete board where board_seq=?";
-	private final String BOARD_UPDATE="update board set title=?, writer=?, content=? where board_seq=?";
-
 	@Override
 	public BoardVO getBoard(int board_seq) {
 		// TODO Auto-generated method stub
@@ -39,10 +40,10 @@ public class BoardDAOJDBC implements BoardDAO{
 				vo.setContent(rs.getString("content"));
 				vo.setRegdate(rs.getString("regdate"));
 				vo.setCnt(rs.getInt("cnt"));
-				
+
 				return vo;
 			}
-		},board_seq);
+		}, board_seq);
 		return vo;
 	}
 
@@ -60,7 +61,7 @@ public class BoardDAOJDBC implements BoardDAO{
 				vo.setContent(rs.getString("content"));
 				vo.setRegdate(rs.getString("regdate"));
 				vo.setCnt(rs.getInt("cnt"));
-				
+
 				return vo;
 			}
 		});
@@ -70,22 +71,20 @@ public class BoardDAOJDBC implements BoardDAO{
 	@Override
 	public void insertBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		template.update(BOARD_INSERT,vo.getTitle(),vo.getWriter(),vo.getContent());
-		
+		template.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
+
 	}
 
 	@Override
 	public void updateBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		template.update(BOARD_UPDATE,vo.getTitle(),vo.getWriter(),vo.getContent(),vo.getBoard_seq());
+		template.update(BOARD_UPDATE, vo.getTitle(), vo.getWriter(), vo.getContent(), vo.getBoard_seq());
 	}
 
 	@Override
 	public void deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		template.update(BOARD_DELETE,board_seq);
+		template.update(BOARD_DELETE, board_seq);
 	}
 
-	
-	
 }

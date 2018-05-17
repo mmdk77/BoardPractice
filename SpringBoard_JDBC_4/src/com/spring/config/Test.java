@@ -11,17 +11,23 @@ import com.spring.board.service.BoardService;
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		AbstractApplicationContext container = new GenericXmlApplicationContext("com/spring/config/applicationContext.xml");
+
 		
-		BoardService boardService = (BoardService) container.getBean("boardService");
+		AbstractApplicationContext container = new GenericXmlApplicationContext("com/spring/config/applicationContext.xml");
+		BoardService boardService = (BoardService)container.getBean("boardService");
+		BoardVO vo = new BoardVO();
+		vo.setTitle("test");
+		vo.setWriter("test");
+		vo.setContent("test");
+		boardService.insertBoard(vo);
 		
 		List<BoardVO> boardList = boardService.getBoardList();
-		for(BoardVO board:boardList) {
-			System.out.println(board.toString());
+		for(BoardVO board:boardList){
+			System.out.println("--->"+board.toString());
 		}
 		
 		container.close();
+		
 		
 	}
 

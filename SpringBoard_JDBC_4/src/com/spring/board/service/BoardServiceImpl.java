@@ -12,37 +12,37 @@ import com.spring.board.repository.BoardDAOJDBC;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
-	public BoardDAOJDBC boardDAO;
+	public BoardDAOJDBC boardDAOJDBC;
 	
 	@Override
 	public BoardVO getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return boardDAO.getBoard(board_seq);
+		return boardDAOJDBC.getBoard(board_seq);
 	}
 
 	@Override
 	public List<BoardVO> getBoardList() {
 		// TODO Auto-generated method stub
-		return boardDAO.getBoardList();
+		return boardDAOJDBC.getBoardList();
 	}
 
 	@Override
 	public void insertBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		boardDAO.insertBoard(vo);
+		boardDAOJDBC.insertBoard(vo);
 		
 	}
 
 	@Override
 	public void deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		boardDAO.deleteBoard(board_seq);
+		boardDAOJDBC.deleteBoard(board_seq);
 	}
 
 	@Override
 	public void updateBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		boardDAO.updateBoard(vo);
+		boardDAOJDBC.updateBoard(vo);
 	}
 
 	
