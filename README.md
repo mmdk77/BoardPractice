@@ -7,6 +7,5 @@
 #JDBCTemplate
 
 # Spring Mybatis 연결
-#mybatis config
-#Mapper
+#mybatis config, Mapper
 
