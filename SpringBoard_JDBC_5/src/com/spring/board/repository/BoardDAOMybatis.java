@@ -1,48 +1,51 @@
-package com.spring.board.service;
+package com.spring.board.repository;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import com.spring.board.domain.BoardVO;
-import com.spring.board.repository.BoardDAOMybatis;
 
-@Service("boardService")
-public class BoardServiceImpl implements BoardService {
+@Repository
+public class BoardDAOMybatis implements BoardDAO{
+
 	
 	@Autowired
-	BoardDAOMybatis boardDAOMybatis;
-
+	private SqlSessionTemplate sqlSessionTemplate;
+	
 	@Override
 	public BoardVO getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.getBoard(board_seq);
+		return sqlSessionTemplate.selectOne("BoardVO.selectOne", board_seq);
 	}
 
 	@Override
 	public List getBoardList() {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.getBoardList();
+		return sqlSessionTemplate.selectList("BoardVO.selectList");
 	}
 
 	@Override
 	public void insertBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.insertBoard(vo);
+		sqlSessionTemplate.insert("BoardVO.insert", vo);
 	}
 
 	@Override
 	public void updateBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.updateBoard(vo);
+		sqlSessionTemplate.update("BoardVO.update", vo);
 	}
 
 	@Override
 	public void deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.deleteBoard(board_seq);
+		sqlSessionTemplate.delete("BoardVO.delete",board_seq);
 	}
+	
 	
 
 }
