@@ -13,26 +13,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
-	<context:component-scan
-		base-package="com.spring">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
+	<context:component-scan base-package="com.spring">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<jee:jndi-lookup id="dataSource"
-		jndi-name="jdbc/oracle" resource-ref="true" />
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/oracle" resource-ref="true" />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" 
 		p:dataSource-ref="dataSource"/> 
 
 
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:configuration="WEB-INF/mybaits/mybatis-config.xml"
-		p:dataSource-ref="dataSource" />
+		p:configLocation="classpath*:WEB-INF/mybatis/mybatis-config.xml"
+		p:dataSource-ref="dataSource"/>
 
-	<bean id="sqlSessionTemplate"
-		class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
 
 </beans>

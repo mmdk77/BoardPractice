@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,15 +22,13 @@ public class BoardController {
 	
 	//글 목록
 	@RequestMapping(value="/board", method=RequestMethod.GET)
-	public ModelAndView getBoardList(HttpServletRequest request) {
+	public String getBoardList(Model model) {
 		
+		System.out.println("@#@#@#BOARD_LIST@#@#@");
 		List list=boardService.getBoardList();
-		request.setAttribute("list", list);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("list",list);
-		mav.setViewName("board/list");
-		
-		return mav;
+		model.addAttribute("list", list);
+	
+		return "board/list";
 		
 	}
 	
