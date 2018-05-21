@@ -15,7 +15,7 @@
 	from board
 </sql>
 
-	<select id="selectOne" parameterType="int">
+	<select id="selectOne" resultType="Board" parameterType="int">
 		<include refid="select"/>
 			where board_seq=#{board_seq}
 	</select>

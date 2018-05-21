@@ -6,7 +6,7 @@ import com.spring.board.domain.Board;
 
 public interface BoardDAO {
 	
-	public Board getBoard(Board board);
+	public Board getBoard(int board_seq);
 	public List<Board> getBoardList();
 	public void insertBoard(Board board);
 	public void updateBoard(Board board);

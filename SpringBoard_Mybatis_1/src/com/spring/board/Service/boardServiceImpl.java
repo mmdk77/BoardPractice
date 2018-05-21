@@ -17,9 +17,9 @@ public class boardServiceImpl implements BoardService{
 	private BoardDAOMybatis boardDAOMybatis;
 	
 	@Override
-	public Board getBoard(Board board) {
+	public Board getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.getBoard(board);
+		return boardDAOMybatis.getBoard(board_seq);
 	}
 
 	@Override

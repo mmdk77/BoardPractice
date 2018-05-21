@@ -16,9 +16,9 @@ public class BoardDAOMybatis implements BoardDAO{
 	
 	
 	@Override
-	public Board getBoard(Board board) {
+	public Board getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("Board.selectOne", board);
+		return sqlSessionTemplate.selectOne("Board.selectOne", board_seq);
 	}
 
 	@Override
