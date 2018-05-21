@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.board.domain" alias="Board" />
+		<package name="com.spring.board.domain"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="WEB-INF/mybatis/BoardMapper.xml" />
+		<mapper resource="com/spring/board/repository/BoardMapper.xml" />
 	</mappers>
 </configuration>

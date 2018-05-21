@@ -13,17 +13,14 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<jee:jndi-lookup  id="dataSource" jndi-name="jdbc/oracle" ></jee:jndi-lookup>
+	<jee:jndi-lookup  id="dataSource" jndi-name="jdbc/oracle" resource-ref="true"/>
 
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" 
-	p:dataSource="dataSource"
-	p:configLocation="classpath*:WEB-INF/mybatis/mybatis-config.xml"/>
+		p:dataSource-ref="dataSource" p:configLocation="WEB-INF/mybatis/mybaits-config.xml"/>
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
-	
-	
 	
 
 </beans>

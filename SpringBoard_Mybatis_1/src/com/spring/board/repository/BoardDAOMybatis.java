@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.board.domain.Board;
 
-@Repository
+@Repository("boardDAOMybatis")
 public class BoardDAOMybatis implements BoardDAO{
 
 	@Autowired
