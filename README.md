@@ -1,5 +1,5 @@
 # Spring Basic DB 연결
-#Connection, PrepareStatement, ResultSet 
+1.Connection, 2.PrepareStatement, 3.ResultSet 
 
 # Spring JDBC 연결
 #JDBCTemplate
