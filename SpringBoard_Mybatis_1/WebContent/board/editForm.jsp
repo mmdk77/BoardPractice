@@ -1,8 +1,8 @@
 <%@page import="com.spring.board.domain.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
-	<%
+    pageEncoding="UTF-8"%>
+    
+    <%
 		Board board =(Board) request.getAttribute("board"); 
 		out.print(board.getBoard_seq()+"입니다.");
 	%>
@@ -12,46 +12,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-
 <script type="text/javascript">
-	function updateBoard(){
-		form1.action="/board/editForm/<%=board.getBoard_seq()%>";
+	function update(){
+		form1.action = "/board/update";
 		form1.submit();
 	}
-	function deleteBoard(){
-		form2.action="/board/";
+	function cancel(){
+		alert("test action");
+		form2.action="/board/list";
 		form2.submit();
+		
 	}
+	
 </script>
 <body>
-	<center>
-		<h1>글 보기</h1>
+<center>
+		<h1>글 수정</h1>
 		<hr>
-	
-			<input type="hidden" name="id" value="<%=board.getBoard_seq()%>">
+			<form name="form1" method="post">
 			<table>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="title"
-						value="<%=board.getTitle()%>"></td>
+					<td><input type="text" name="title" value="<%=board.getBoard_seq()%>"></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer"
-						value="<%=board.getWriter()%>"></td>
+					<td><input type="text" name="writer" value="<%=board.getBoard_seq()%>"></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="100" rows="20" name="content"><%=board.getContent() %></textarea></td>
+					<td><textarea cols="100" rows="20" name="content"><%=board.getBoard_seq()%></textarea></td>
 				</tr>
 			</table>
-			<form name="form1" method="get">
-				<input type="button" value="수정" onclick="updateBoard()">
+			<hr>
+			<div>
+				<input type="button" value="수정" onclick="update()">
+			</div>
 			</form>
-			<form name="form2" method="post">
-				<input type="button" value="삭제" onclick="deleteBoard()">
+			
+			<form name="form2" method="get">
+				<input type="button" value="취소" onclick="cancel()">
 			</form>
-				
 	</center> 
 
 </body>

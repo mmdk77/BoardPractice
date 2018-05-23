@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-	List<Board> list = (List) request.getAttribute("list");
+	List<Board> list = (List<Board>) request.getAttribute("list");
 	out.print(list.size()+"개");
 
 %>
@@ -15,7 +15,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script type="text/javascript">
+	form
+</script>
 <center>
 	<h1>게시판 목록</h1>
 	<hr>
@@ -40,9 +42,27 @@
 				<td width="50"><%=board.getCnt() %></td>
 			</tr>
 			<%} %>
+			<tr>
+				<td height="1" colspan="5" align="center">
+					<a>[1]</a>
+				</td>
+			</tr>
 		</tbody>
 	</table>
-
+	<hr>
+	
+	<select>
+			<option>제목</option>
+			<option>작성자</option>
+	</select>
+	<input type="text" name="select">
+	<input type="submit" value="검색">
+	
+	<form action="/board/writeForm" method="post">
+		<input type ="submit" value="글쓰기">
+	</form>
+	<hr>
+	
 </center>
 
 
