@@ -8,8 +8,8 @@ public interface BoardService {
 	
 	public Board getBoard(int board_seq);
 	public List<Board> getBoardList();
-	public void insertBoard(Board board);
-	public void updateBoard(Board board);
-	public void deleteBoard(int board_seq);
+	public int insertBoard(Board board);
+	public int updateBoard(Board board);
+	public int deleteBoard(int board_seq);
 
 }

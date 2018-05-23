@@ -19,7 +19,7 @@
 	}
 	function cancel(){
 		alert("test action");
-		form2.action="/board/list";
+		form2.action="/board/delete";
 		form2.submit();
 		
 	}

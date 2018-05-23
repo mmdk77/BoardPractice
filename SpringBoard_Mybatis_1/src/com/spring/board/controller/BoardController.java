@@ -60,19 +60,13 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	@RequestMapping(value="/board/editForm")
+	public String clickEditBoard() {
+
 	
-	/*###########################
-	#######글 수정 이동 Controller########
-	###########################*/
-	@RequestMapping(value="/board/editForm/{board_seq}", method=RequestMethod.GET)
-	public ModelAndView clickEditBoard(@PathVariable int board_seq) {
-		System.out.println("##########글 수정############");
-		Board board = boardService.getBoard(board_seq);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("board", board);
-		mav.setViewName("/board/editForm/{board_seq}");
-		return mav;
+		return "/board/ediForm";
 	}
+	
 	
 	@RequestMapping(value="/board/update", method=RequestMethod.POST)
 	public String updateBoard(Board board) {
@@ -83,9 +77,8 @@ public class BoardController {
 	
 	
 	
-	@RequestMapping(value="/board/{board_seq}", method=RequestMethod.POST)
-	public String deleteBoard(@PathVariable("board_seq") int board_seq) {
-		
+	@RequestMapping(value="/board/delete", method=RequestMethod.POST)
+	public String deleteBoard(int board_seq) {
 		System.out.println("@@@@@@@글 삭제@@@@@@");
 		boardService.deleteBoard(board_seq);
 		

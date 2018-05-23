@@ -29,21 +29,21 @@ public class boardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void insertBoard(Board board) {
+	public int insertBoard(Board board) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.insertBoard(board);
+		return boardDAOMybatis.insertBoard(board);
 	}
 
 	@Override
-	public void updateBoard(Board board) {
+	public int updateBoard(Board board) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.updateBoard(board);
+		return boardDAOMybatis.updateBoard(board);
 	}
 
 	@Override
-	public void deleteBoard(int board_seq) {
+	public int deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		boardDAOMybatis.deleteBoard(board_seq);
+		return boardDAOMybatis.deleteBoard(board_seq);
 	}
 	
 	

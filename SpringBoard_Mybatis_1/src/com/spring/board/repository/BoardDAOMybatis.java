@@ -28,21 +28,21 @@ public class BoardDAOMybatis implements BoardDAO{
 	}
 
 	@Override
-	public void insertBoard(Board board) {
+	public int insertBoard(Board board) {
 		// TODO Auto-generated method stub
-		sqlSessionTemplate.insert("Board.insert", board);
+		return sqlSessionTemplate.insert("Board.insert", board);
 	}
 
 	@Override
-	public void updateBoard(Board board) {
+	public int updateBoard(Board board) {
 		// TODO Auto-generated method stub
-		sqlSessionTemplate.update("Board.update", board);
+		return sqlSessionTemplate.update("Board.update", board);
 	}
 
 	@Override
-	public void deleteBoard(int board_seq) {
+	public int deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		sqlSessionTemplate.delete("Board.delete", board_seq);
+		return sqlSessionTemplate.delete("Board.delete", board_seq);
 	}
 
 	
