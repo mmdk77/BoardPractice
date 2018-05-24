@@ -32,6 +32,7 @@
 	
 	<update id="update" parameterType="Board">
 		update board set title=#{title},writer=#{writer},content=#{content}
+		where board_seq=#{board_seq}
 	</update>
 	
 	<delete id="delete" parameterType="int">

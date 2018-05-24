@@ -10,42 +10,45 @@ import com.spring.board.domain.Board;
 import com.spring.board.repository.BoardDAOMybatis;
 
 @Service("boardService")
-public class boardServiceImpl implements BoardService{
+public class boardServiceImpl implements BoardService {
 
 	@Autowired
 	@Qualifier("boardDAOMybatis")
 	private BoardDAOMybatis boardDAOMybatis;
-	
+
 	@Override
 	public Board getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.getBoard(board_seq);
+		Board board = boardDAOMybatis.getBoard(board_seq); 
+		return board;
 	}
 
 	@Override
 	public List<Board> getBoardList() {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.getBoardList();
+		List<Board> boardList = boardDAOMybatis.getBoardList(); 
+		return boardList;
 	}
 
 	@Override
-	public int insertBoard(Board board) {
+	public void insertBoard(Board board) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.insertBoard(board);
+		boardDAOMybatis.insertBoard(board);
+
 	}
 
 	@Override
-	public int updateBoard(Board board) {
+	public void updateBoard(Board board) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.updateBoard(board);
+		boardDAOMybatis.updateBoard(board);
+
 	}
 
 	@Override
-	public int deleteBoard(int board_seq) {
+	public void deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return boardDAOMybatis.deleteBoard(board_seq);
+		boardDAOMybatis.deleteBoard(board_seq);
+
 	}
-	
-	
 
 }

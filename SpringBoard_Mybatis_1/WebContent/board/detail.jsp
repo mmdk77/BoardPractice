@@ -17,28 +17,28 @@
 		<h1>글 보기</h1>
 		<hr>
 	
-			<input type="hidden" name="board_seq" value="<%=board.getBoard_seq()%>">
+			<input type="hidden" name="board_seq" value="<%=board.getBoard_seq()%>" disabled="disabled">
 			<table>
 				<tr>
 					<td>제목</td>
 					<td>
-						<input type="text" name="title" value="<%=board.getTitle()%>">
+						<input type="text" name="title" value="<%=board.getTitle()%>" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
 					<td>
-						<input type="text" name="writer" value="<%=board.getWriter()%>">
+						<input type="text" name="writer" value="<%=board.getWriter()%>" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea cols="100" rows="20" name="content"><%=board.getContent() %></textarea></td>
+					<td><textarea cols="100" rows="20" name="content" disabled="disabled"><%=board.getContent() %></textarea></td>
 				</tr>
 			</table>
 			<a href="/board/list">목록</a>&nbsp;&nbsp;&nbsp;
-			<a href="/board/editForm">수정</a>&nbsp;&nbsp;&nbsp;
-			<a href="/board/delete">삭제</a>
+			<a href="/board/editForm/<%=board.getBoard_seq()%>">수정</a>&nbsp;&nbsp;&nbsp;
+			<a href="/board/delete/<%=board.getBoard_seq()%>">삭제</a>
 				
 	</center> 
 

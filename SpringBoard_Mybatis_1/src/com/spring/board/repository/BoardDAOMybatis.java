@@ -18,31 +18,36 @@ public class BoardDAOMybatis implements BoardDAO{
 	@Override
 	public Board getBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("Board.selectOne", board_seq);
+		Board board = sqlSessionTemplate.selectOne("Board.selectOne", board_seq);
+		return board;
 	}
 
 	@Override
 	public List<Board> getBoardList() {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("Board.selectList");
+		List<Board> boardList = sqlSessionTemplate.selectList("Board.selectList");
+		return boardList;
 	}
 
 	@Override
-	public int insertBoard(Board board) {
+	public void insertBoard(Board board) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.insert("Board.insert", board);
+		sqlSessionTemplate.insert("Board.insert", board);
+		
 	}
 
 	@Override
-	public int updateBoard(Board board) {
+	public void updateBoard(Board board) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.update("Board.update", board);
+		sqlSessionTemplate.update("Board.update", board); 
+		
 	}
 
 	@Override
-	public int deleteBoard(int board_seq) {
+	public void deleteBoard(int board_seq) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.delete("Board.delete", board_seq);
+		sqlSessionTemplate.delete("Board.delete", board_seq);
+		 
 	}
 
 	
