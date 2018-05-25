@@ -23,7 +23,8 @@ public class BoardDAOMybatis implements BoardDAO{
 	@Override
 	public List<Board> getBoardList() {
 		// TODO Auto-generated method stub
-		return template.selectList("Board.selectList");
+		List<Board> list=template.selectList("Board.selectList");
+		return list;
 	}
 
 	@Override

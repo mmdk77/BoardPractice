@@ -17,7 +17,7 @@
  </sql>
  
  
- <select id="selectOne" parameterType="int">
+ <select id="selectOne" resultType="Board" parameterType="int">
  	<include refid="select"  />
  		where board_seq=#{board_seq}
  </select>
@@ -33,7 +33,7 @@
  	values (board_seq.nextval,#{title},#{writer},#{content})
  </insert>
  
- <update id="update" parameterMap="Board">
+ <update id="update" parameterType="Board">
  	update board set title=#{title},writer=#{writer},content=#{content}
  	where board_seq=#{board_seq}
  </update>
